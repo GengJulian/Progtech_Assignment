@@ -5,8 +5,14 @@ import java.util.List;
 
 public abstract class Warehouse {
     String name;
+    Enum type;
+    int capacity;
     List<Item> stockpile = new ArrayList<Item>();
     List<Supplier> suppliers = new ArrayList<Supplier>();
+
+    public Warehouse(String name){
+        this.name = name;
+    }
 
     public void listStockpile(){
         System.out.println("All the items in the warehouse:");
@@ -22,12 +28,21 @@ public abstract class Warehouse {
         }
     }
 
-    public void getItem(){}
+    public abstract Item getItem(String itemName) throws InterruptedException;
 
-    public void orderSupply(){}
+    public abstract  void orderSupply(Order order);
 
     public void registerSupplier(Supplier supplier){
         this.suppliers.add(supplier);
+    }
+
+    @Override
+    public String toString() {
+        return "Warehouse{" +
+                "name='" + name + '\'' +
+                ", type=" + type +'\'' +
+                ", capacity="+capacity+
+                '}';
     }
 
 }
