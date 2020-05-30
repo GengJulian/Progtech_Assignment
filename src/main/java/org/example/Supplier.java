@@ -1,17 +1,23 @@
 package org.example;
 
 public abstract class  Supplier {
-    Enum supplierType;
+    ItemTypes supplierType;
+    ItemFactory itemFactory = new ItemFactory();
 
-    public Enum getType(){
+    public ItemTypes getType(){
         return this.supplierType;
     }
 
-    public void produce(Order order){
-
-        packageProduct();
-        sendProduct();
+    public Item sendProduct(Order order){
+        return produce(order);
     }
 
-    public abstract Item packageProduct(Item product);
+    private Item produce(Order order){
+        Item product = itemFactory.createItem(order.itemName,order.itemType);
+        packageProduct(product);
+        return product;
+    }
+
+    protected abstract void packageProduct(Item product);
+    protected abstract Item sendProduct(Item product);
 }

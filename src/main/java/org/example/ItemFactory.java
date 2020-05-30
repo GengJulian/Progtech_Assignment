@@ -10,14 +10,14 @@ public class ItemFactory {
         return instance;
     }
 
-    public Item createItem(String name,ItemTypes type,int price){
+    public Item createItem(String name,ItemTypes type){
         switch (type){
             case food:
-                return new Food(name,price);
+                return new Food(name,5);
             case book:
-                return new Book(name,price);
+                return new Book(name,10);
             case electronic_device:
-                return new ElectronicDevice(name,price);
+                return new ElectronicDevice(name,20);
             default:
                 return null;
         }
