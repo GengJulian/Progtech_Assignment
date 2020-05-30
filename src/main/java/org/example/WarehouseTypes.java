@@ -1,5 +1,5 @@
 package org.example;
 
 public enum WarehouseTypes {
-    small,medium,large
+    small,medium,large,outsider
 }

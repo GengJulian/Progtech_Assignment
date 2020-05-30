@@ -5,13 +5,14 @@ import java.util.List;
 
 public abstract class Warehouse {
     String name;
-    Enum type;
+    WarehouseTypes type;
     int capacity;
     List<Item> stockpile = new ArrayList<Item>();
     List<Supplier> suppliers = new ArrayList<Supplier>();
 
-    public Warehouse(String name){
+    public Warehouse(String name,WarehouseTypes type){
         this.name = name;
+        this.type = type;
     }
 
     public void listStockpile(){

@@ -2,9 +2,9 @@ package org.example;
 
 public class LargeWarehouse extends Warehouse{
 
-
     public LargeWarehouse(String name) {
-        super(name);
+        super(name,WarehouseTypes.large);
+        capacity = 500;
     }
 
     @Override

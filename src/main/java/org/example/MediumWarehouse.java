@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MediumWarehouse extends Warehouse {
-    String name;
-    int capacity = 500;
-    Enum type = WarehouseTypes.medium;
-    List<Item> stockpile = new ArrayList<Item>();
-    List<Supplier> suppliers = new ArrayList<Supplier>();
 
     public MediumWarehouse(String name) {
-        super(name);
+        super(name,WarehouseTypes.medium);
+        super.capacity = 500;
     }
 
 

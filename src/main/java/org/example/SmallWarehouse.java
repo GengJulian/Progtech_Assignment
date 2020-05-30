@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmallWarehouse extends Warehouse{
-    int capacity = 200;
-    Enum type = WarehouseTypes.small;
-    List<Item> stockpile = new ArrayList<Item>();
-    List<Supplier> suppliers = new ArrayList<Supplier>();
+
 
     public SmallWarehouse(String name) {
-        super(name);
+        super(name,WarehouseTypes.small);
+        super.capacity = 200;
     }
-
 
     @Override
     public Item getItem(String itemName) {

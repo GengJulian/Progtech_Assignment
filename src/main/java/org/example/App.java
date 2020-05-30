@@ -21,6 +21,5 @@ public class App
              */
         }
         warehouseManager.listWarehouses();
-        warehouseManager.
     }
 }

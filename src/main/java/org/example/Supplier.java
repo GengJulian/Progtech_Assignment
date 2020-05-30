@@ -19,5 +19,5 @@ public abstract class  Supplier {
     }
 
     protected abstract void packageProduct(Item product);
-    protected abstract Item sendProduct(Item product);
+
 }
