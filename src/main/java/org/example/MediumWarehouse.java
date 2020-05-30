@@ -31,4 +31,13 @@ public class MediumWarehouse extends Warehouse {
     public void orderSupply(Order order) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Warehouse{" +
+                "name=" + name + '\'' +
+                ", type=" + type +'\'' +
+                ", capacity="+capacity+
+                '}';
+    }
 }

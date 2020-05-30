@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmallWarehouse extends Warehouse{
-    String name;
     int capacity = 200;
     Enum type = WarehouseTypes.small;
     List<Item> stockpile = new ArrayList<Item>();
@@ -30,5 +29,14 @@ public class SmallWarehouse extends Warehouse{
     public void orderSupply(Order order) {
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Warehouse{" +
+                "name=" + super.name + '\'' +
+                ", type=" + type +'\'' +
+                ", capacity="+capacity+
+                '}';
     }
 }

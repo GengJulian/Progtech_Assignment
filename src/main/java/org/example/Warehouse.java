@@ -15,7 +15,7 @@ public abstract class Warehouse {
     }
 
     public void listStockpile(){
-        System.out.println("All the items in the warehouse:");
+        System.out.println("Items in "+this.name);
         for(Item item : stockpile){
             System.out.println(item.toString());
         }
@@ -39,7 +39,7 @@ public abstract class Warehouse {
     @Override
     public String toString() {
         return "Warehouse{" +
-                "name='" + name + '\'' +
+                "name=" + name + '\'' +
                 ", type=" + type +'\'' +
                 ", capacity="+capacity+
                 '}';
