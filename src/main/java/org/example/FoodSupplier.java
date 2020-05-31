@@ -6,4 +6,14 @@ public class FoodSupplier extends Supplier {
 
     }
 
+    @Override
+    public void update(Order itemorder,Warehouse notifier) {
+        notifier.receiveSupply(super.sendProduct(itemorder));
+    }
+
+    @Override
+    public void setSubject(Subject sub) {
+
+
+    }
 }

@@ -3,7 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Warehouse {
+public abstract class Warehouse implements Subject{
     String name;
     WarehouseTypes type;
     int capacity;
@@ -29,13 +29,11 @@ public abstract class Warehouse {
         }
     }
 
-    public abstract Item getItem(String itemName) throws InterruptedException;
+    public abstract Item getItem(Order itemorder) throws InterruptedException;
 
     public abstract  void orderSupply(Order order);
 
-    public void registerSupplier(Supplier supplier){
-        this.suppliers.add(supplier);
-    }
+
 
     @Override
     public String toString() {
