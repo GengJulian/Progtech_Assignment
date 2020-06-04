@@ -28,4 +28,10 @@ public abstract class  Supplier implements Observer{
 
     protected abstract void packageProduct(Item product);
 
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "supplierType=" + supplierType +
+                '}';
+    }
 }

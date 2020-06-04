@@ -6,37 +6,22 @@ public class WarehouseAdapter extends Warehouse{
     OutsiderWarehouse adaptee;
     public WarehouseAdapter(OutsiderWarehouse adaptee) {
         super(adaptee.name,WarehouseTypes.outsider);
-        super.stockpile = adaptee.cargo();
-        super.suppliers = adaptee.suppliers();
+        super.stockpile = adaptee.cargo;
+        super.suppliers = adaptee.suppliers;
         this.adaptee = adaptee;
     }
 
     @Override
-    public Item getItem(String itemName) throws InterruptedException {
-        Item outsiderItem = adaptee.getCargoItem();
+    public Item getItem(Order itemorder) throws InterruptedException {
+        Item outsiderItem = adaptee.getCargoItem(itemorder);
         outsiderItem.price += 10;
         return outsiderItem;
     }
 
-    @Override
-    public Item getItem(Order itemorder) throws InterruptedException {
-        for (Item item : stockpile){
-            if (item.name == itemorder.itemName && item.type == itemorder.itemType){
-                stockpile.remove(item);
-                return item;
-            }
-            Thread.sleep(40000);
-        }
-        if(itemorder.quantity<=(capacity-super.stockpile.size())) {
-            notifySuppliers(itemorder);
-            System.out.println("Nincs raktáron a kívánt tárgy!\n Folyamatban a rendelés!");
-        }
-        return null;
-    }
 
     @Override
     public void orderSupply(Order order) {
-        adaptee.RefulStock();
+        adaptee.RefulStock(order);
     }
 
     @Override

@@ -3,7 +3,7 @@ package org.example;
 public class ItemFactory {
     private static ItemFactory instance;
 
-    public ItemFactory getInstance(){
+    public static ItemFactory getInstance(){
         if(instance == null){
             instance = new ItemFactory();
         }

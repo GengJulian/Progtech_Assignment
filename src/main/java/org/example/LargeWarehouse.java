@@ -27,8 +27,12 @@ public class LargeWarehouse extends Warehouse{
     }
 
     @Override
-    public void orderSupply(Order order) {
-
+    public void orderSupply(Order itemorder) {
+        if(itemorder.quantity<=(capacity-super.stockpile.size())) {
+            notifySuppliers(itemorder);
+        }else{
+            System.out.println(String.format("%f is full!",this.name));
+        }
     }
 
     @Override

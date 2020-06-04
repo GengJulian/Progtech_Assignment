@@ -1,9 +1,9 @@
 package org.example;
 
-public class FoodSupplier extends Supplier {
+public class BookSupplier extends Supplier{
     @Override
     protected void packageProduct(Item product) {
-        System.out.println("Az étel be lett csomagolva.");
+        System.out.println("A könyv be lett csomagolva!");
     }
 
     @Override
@@ -13,7 +13,6 @@ public class FoodSupplier extends Supplier {
 
     @Override
     public void setSubject(Subject sub) {
-
 
     }
 }
