@@ -16,7 +16,7 @@ public abstract class  Supplier implements Observer{
         return produce(order);
     }
 
-    private List<Item> produce(Order order){
+    protected List<Item> produce(Order order){
         List<Item>supply = new ArrayList<>();
         for (int i= 0;i<order.quantity;i++){
             Item product = itemFactory.createItem(order.itemName,order.itemType);

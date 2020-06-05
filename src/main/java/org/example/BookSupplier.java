@@ -1,9 +1,14 @@
 package org.example;
 
 public class BookSupplier extends Supplier{
+
+    public BookSupplier(){
+        this.supplierType = ItemTypes.book;
+    }
+
     @Override
     protected void packageProduct(Item product) {
-        System.out.println("A könyv be lett csomagolva!");
+        System.out.println(String.format("%s be lett csomagolva!",product.name));
     }
 
     @Override
@@ -11,8 +16,4 @@ public class BookSupplier extends Supplier{
         notifier.receiveSupply(super.sendProduct(itemorder));
     }
 
-    @Override
-    public void setSubject(Subject sub) {
-
-    }
 }
