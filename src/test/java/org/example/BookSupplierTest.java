@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookSupplierTest {
-    Supplier bookSupplier = new BookSupplier();
+    Supplier bookSupplier = new BookSupplier("bookSupplier01");
     @Test
     void produce(){
             List<Item> items = bookSupplier.produce(new Order("book",ItemTypes.book,2));

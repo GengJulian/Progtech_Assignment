@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class  Supplier implements Observer{
-
+    String supplierName;
     ItemTypes supplierType;
     ItemFactory itemFactory = new ItemFactory();
+
+    public String getSupplierName(){return this.supplierName;}
 
     public ItemTypes getType(){
         return this.supplierType;
@@ -28,10 +30,12 @@ public abstract class  Supplier implements Observer{
 
     protected abstract void packageProduct(Item product);
 
+
     @Override
     public String toString() {
         return "Supplier{" +
-                "supplierType=" + supplierType +
+                "supplierName='" + supplierName + '\'' +
+                ", supplierType=" + supplierType +
                 '}';
     }
 }

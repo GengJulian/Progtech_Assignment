@@ -48,8 +48,12 @@ public class MediumWarehouse extends Warehouse {
     }
 
     @Override
-    public void unregisterSupplier(Supplier supplier) {
-        suppliers.remove(supplier);
+    public void unregisterSupplier(String supplierName,ItemTypes supplierType) {
+        for(Supplier supplier : suppliers){
+            if(supplier.getSupplierName() == supplierName && supplier.getType().equals(supplierType)){
+                suppliers.remove(supplier);
+            }
+        }
     }
 
     @Override

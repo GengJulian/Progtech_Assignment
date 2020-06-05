@@ -2,8 +2,9 @@ package org.example;
 
 public class FoodSupplier extends Supplier {
 
-    public FoodSupplier(){
-        this.supplierType = ItemTypes.electronic_device;
+    public FoodSupplier(String supplierName){
+        this.supplierType = ItemTypes.food;
+        this.supplierName = supplierName;
     }
 
     @Override

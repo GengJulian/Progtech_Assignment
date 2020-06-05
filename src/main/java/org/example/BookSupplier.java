@@ -2,8 +2,9 @@ package org.example;
 
 public class BookSupplier extends Supplier{
 
-    public BookSupplier(){
+    public BookSupplier(String supplierName){
         this.supplierType = ItemTypes.book;
+        this.supplierName = supplierName;
     }
 
     @Override
