@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LargeWarehouseTest {
@@ -34,10 +36,10 @@ class LargeWarehouseTest {
 
     @Test
     void getItem() throws InterruptedException {
-        Item item = warehouse.getItem(new Order("book1",ItemTypes.book,1));
-        assertNotEquals(null,item);
-        assertEquals("book1",item.name);
-        assertEquals(ItemTypes.book,item.type);
+        List<Item> items = warehouse.getItem(new Order("book1",ItemTypes.book,1));
+        assertNotEquals(null,items.get(0));
+        assertEquals("book1",items.get(0).name);
+        assertEquals(ItemTypes.book,items.get(0).type);
     }
 
     @Test

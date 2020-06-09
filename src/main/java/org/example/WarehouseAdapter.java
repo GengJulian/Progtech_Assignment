@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WarehouseAdapter extends Warehouse{
@@ -11,11 +12,26 @@ public class WarehouseAdapter extends Warehouse{
         this.adaptee = adaptee;
     }
 
+
     @Override
-    public Item getItem(Order itemorder) throws InterruptedException {
-        Item outsiderItem = adaptee.getCargoItem(itemorder);
-        outsiderItem.price += 10;
-        return outsiderItem;
+    public List<Item> getItem(Order itemorder) throws InterruptedException {
+        List<Item> orderedItems = new ArrayList<>();
+        for (Item item : adaptee.cargo){
+            if (item.name == itemorder.itemName && item.type == itemorder.itemType ){
+                orderedItems.add(item);
+                adaptee.cargo.remove(item);
+                itemorder.quantity--;
+            }
+            if(itemorder.quantity == 0)
+                return orderedItems;
+            Thread.sleep(80000);
+        }
+
+        if(itemorder.quantity<=(capacity-super.stockpile.size())) {
+            notifySuppliers(itemorder);
+            System.out.println("Nincs raktáron a kívánt tárgy!\n Folyamatban a rendelés!");
+        }
+        return orderedItems;
     }
 
 

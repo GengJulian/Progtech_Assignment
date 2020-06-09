@@ -3,7 +3,11 @@ package org.example;
 import java.util.*;
 
 public class Manager {
-    Map<String,Warehouse> managedWarehouses = new HashMap<>();
+    private Map<String,Warehouse> managedWarehouses = new HashMap<>();
+
+    public int numberOfWarehouses(){
+        return managedWarehouses.size();
+    }
 
     public void addWarehouse(Warehouse warehouse){
         managedWarehouses.put(warehouse.name,warehouse);
@@ -11,10 +15,17 @@ public class Manager {
 
     public void removeWarehouse(String whName){
         if(managedWarehouses.remove(whName) == null){
-            System.out.println(String.format("%f is not among the managed warehouses!",whName));
+            System.out.println(String.format(whName + " is not among the managed warehouses!"));
             return;
         }
-        System.out.println(String.format("%f has successfully removed from the managed warehouses!",whName));
+        System.out.println(String.format(whName + "has successfully removed from the managed warehouses!"));
+    }
+
+    public void registerSupplier(String warehouseName,Supplier newSupplier){
+        if(warehouseName == null || newSupplier == null){
+            throw new IllegalArgumentException();
+        }
+        managedWarehouses.get(warehouseName).registerSupplier(newSupplier);
     }
 
     public void listWarehouses(){
@@ -35,14 +46,18 @@ public class Manager {
         managedWarehouses.get(warehouseName).listSuppliers();
     }
 
-    public Item orderItem(Order itemorder) throws InterruptedException {
+    public List<Item> orderItem(Order itemorder) throws InterruptedException {
+        List<Item> orderedItems = new ArrayList<>();
         Iterator it = managedWarehouses.entrySet().iterator();
         while(it.hasNext()){
             Map.Entry mapElement = (Map.Entry)it.next();
-            Item item = ((Warehouse)mapElement.getValue()).getItem(itemorder);
-            if(item != null){
-                return item;
+            Warehouse managedWarehouse = (Warehouse)mapElement.getValue();
+            orderedItems.addAll(managedWarehouse.getItem(itemorder));
+            //Thread.sleep(40000);
+            if(orderedItems.size() == itemorder.quantity){
+                return orderedItems;
             }
+            itemorder.quantity -= orderedItems.size();
         }
         System.out.println("Nincs raktáron a kívánt termék!\n Termék beszerzése folyamatban!");
         return null;
@@ -50,6 +65,10 @@ public class Manager {
 
     public void orderSupply(String warehouseName,Order order){
         managedWarehouses.get(warehouseName).orderSupply(order);
+    }
+
+    public int numOfSpecificItemInWarehouse(String warehouseName,String itemName){
+        return managedWarehouses.get(warehouseName).numberOfSpecificItem(itemName);
     }
 
 

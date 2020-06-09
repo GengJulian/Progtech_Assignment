@@ -15,6 +15,15 @@ public abstract class Warehouse implements Subject{
         this.type = type;
     }
 
+    public int numberOfSpecificItem(String itemName){
+        int numberOfItem = 0;
+        for (int i = 0;i<stockpile.size();i++){
+            if(stockpile.get(i).name == itemName)
+                numberOfItem++;
+        }
+        return numberOfItem;
+    }
+
     public void listStockpile(){
         System.out.println("Items in "+this.name);
         for(Item item : stockpile){
@@ -29,7 +38,7 @@ public abstract class Warehouse implements Subject{
         }
     }
 
-    public abstract Item getItem(Order itemorder) throws InterruptedException;
+    public abstract List<Item> getItem(Order itemorder) throws InterruptedException;
 
     public abstract  void orderSupply(Order order);
 

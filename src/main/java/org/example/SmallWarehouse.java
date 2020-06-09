@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class SmallWarehouse extends Warehouse{
@@ -13,25 +14,34 @@ public class SmallWarehouse extends Warehouse{
     }
 
     @Override
-    public Item getItem(Order itemorder) throws InterruptedException {
-        for (Item item : stockpile){
-            if (item.name == itemorder.itemName && item.type == itemorder.itemType){
-                stockpile.remove(item);
-                return item;
+    public List<Item> getItem(Order itemorder)  {
+        Iterator it = stockpile.iterator();
+        List<Item> orderedItems = new ArrayList<>();
+        while(it.hasNext()){
+            Item item =(Item)it.next();
+            if (item.name == itemorder.itemName && item.type == itemorder.itemType ){
+                orderedItems.add(item);
+                //stockpile.remove(item);
+                it.remove();
             }
-            Thread.sleep(40000);
+            if(orderedItems.size() == itemorder.quantity)
+                return orderedItems;
         }
+
         if(itemorder.quantity<=(capacity-super.stockpile.size())) {
             notifySuppliers(itemorder);
             System.out.println("Nincs raktáron a kívánt tárgy!\n Folyamatban a rendelés!");
         }
-        return null;
+        return orderedItems;
     }
 
     @Override
-    public void orderSupply(Order order) {
-
-
+    public void orderSupply(Order itemorder) {
+        if(itemorder.quantity<=(capacity-super.stockpile.size())) {
+            notifySuppliers(itemorder);
+        }else{
+            System.out.println(String.format("%f is full!",this.name));
+        }
     }
 
     @Override

@@ -39,6 +39,18 @@ Letesztelt osztályok, azok metódusai:
     * registerSupplier: Új besszállító hozzáadása.
     * unregisterSupplier: Besszállító eltávolítása.
     * notifySuppliers: Beszállítók értesítése áruhiány esetén.
+* Manager
+    * numberOfWarehouses: Visszadja a menedzselt raktárak számát.
+    * addWarehouse: Felvesz egy új raktárat a menedzselt raktárak közé.
+    * removeWarehouse: Eltávolítja a kiválasztott raktárat a menedzselt raktárak közül.
+    * registerSupplier: Új beszállítót adunk hozzá a kiválasztott raktárhoz.
+    * unregisterSupplier: Eltávolítunk egy beszállítót a kiválasztott raktártól.
+    * listWarehouses: Kilistázza a menedzselt raktárakat.
+    * listStockpile: Kilistázza a kiválasztott raktár tartalmát.
+    * listSuppliers: Kilistázza egy adott raktárhoz tartozó beszállítókat.
+    * orderItem: Rendelés leadása a raktárakhoz. 
+    * orderSupply: Kiválasztott raktárba szállítmány rendelése.
+    * numOfSpecificItemInWarehouse: Adott tárgy darabszámának lekérdezése egy adott raktárból.
 
 
 

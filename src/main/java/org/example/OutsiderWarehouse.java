@@ -41,6 +41,25 @@ public class OutsiderWarehouse {
         return null;
     }
 
+    public List<Item> getItem(Order itemorder) throws InterruptedException {
+        List<Item> orderedItems = new ArrayList<>();
+        for (Item item : cargo){
+            if (item.name == itemorder.itemName && item.type == itemorder.itemType ){
+                orderedItems.add(item);
+                cargo.remove(item);
+                itemorder.quantity--;
+            }
+            if(itemorder.quantity == 0)
+                return orderedItems;
+            Thread.sleep(80000);
+        }
+
+        if(itemorder.quantity<=(capacity-cargo.size())) {
+            System.out.println("Nincs raktáron a kívánt tárgy!\n Folyamatban a rendelés!");
+        }
+        return orderedItems;
+    }
+
 
     public void RefulStock(Order order) {
 
