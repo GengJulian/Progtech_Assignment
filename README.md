@@ -51,6 +51,8 @@ Letesztelt osztályok, azok metódusai:
     * orderItem: Rendelés leadása a raktárakhoz. 
     * orderSupply: Kiválasztott raktárba szállítmány rendelése.
     * numOfSpecificItemInWarehouse: Adott tárgy darabszámának lekérdezése egy adott raktárból.
-
+* WarehouseFactory
+    * getInstance: Ezzel a metódussal tudjuk példányosítani a factory-t.
+    * createWarehouse: Létrehozza a megadott típusú raktárat a megadott névvel. 
 
 

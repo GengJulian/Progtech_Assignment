@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class WarehouseAdapter extends Warehouse{
@@ -14,17 +15,18 @@ public class WarehouseAdapter extends Warehouse{
 
 
     @Override
-    public List<Item> getItem(Order itemorder) throws InterruptedException {
+    public List<Item> getItem(Order itemorder)  {
+        Iterator it = stockpile.iterator();
         List<Item> orderedItems = new ArrayList<>();
-        for (Item item : adaptee.cargo){
+        while(it.hasNext()){
+            Item item =(Item)it.next();
             if (item.name == itemorder.itemName && item.type == itemorder.itemType ){
                 orderedItems.add(item);
-                adaptee.cargo.remove(item);
-                itemorder.quantity--;
+                //stockpile.remove(item);
+                it.remove();
             }
-            if(itemorder.quantity == 0)
+            if(orderedItems.size() == itemorder.quantity)
                 return orderedItems;
-            Thread.sleep(80000);
         }
 
         if(itemorder.quantity<=(capacity-super.stockpile.size())) {

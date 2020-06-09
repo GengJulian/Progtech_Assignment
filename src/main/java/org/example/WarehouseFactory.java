@@ -4,9 +4,11 @@ public class WarehouseFactory {
 
     private static WarehouseFactory instance;
 
+    private WarehouseFactory(){}
 
 
-    public WarehouseFactory getInstance(){
+
+    public static WarehouseFactory getInstance(){
         if(instance == null){
             instance = new WarehouseFactory();
         }
