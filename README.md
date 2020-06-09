@@ -1,7 +1,7 @@
 # Progtech beadandó
 Raktárrendszert menedzselő program, a manager felületen lehetőség van rendelést leadni, a raktárakról különféle információkat lekérdezni, menedezselni a beszállítókat. 
 ## Felhasznált tervezési minták
-### Factory tervezési minta
+### Factory
 A különféle termékek, különböző raktárak létrehozásához használtam, így a későbbiekben könnyeben lehet kibővíteni új típusú termékekkel,raktárakkal a programot.
 
 ### Singleton
