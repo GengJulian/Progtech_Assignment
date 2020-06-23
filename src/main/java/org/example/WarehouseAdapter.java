@@ -15,29 +15,6 @@ public class WarehouseAdapter extends Warehouse{
 
 
     @Override
-    public List<Item> getItem(Order itemorder)  {
-        Iterator it = stockpile.iterator();
-        List<Item> orderedItems = new ArrayList<>();
-        while(it.hasNext()){
-            Item item =(Item)it.next();
-            if (item.name == itemorder.itemName && item.type == itemorder.itemType ){
-                orderedItems.add(item);
-                //stockpile.remove(item);
-                it.remove();
-            }
-            if(orderedItems.size() == itemorder.quantity)
-                return orderedItems;
-        }
-
-        if(itemorder.quantity<=(capacity-super.stockpile.size())) {
-            notifySuppliers(itemorder);
-            System.out.println("Nincs raktáron a kívánt tárgy!\n Folyamatban a rendelés!");
-        }
-        return orderedItems;
-    }
-
-
-    @Override
     public void orderSupply(Order order) {
         adaptee.RefulStock(order);
     }

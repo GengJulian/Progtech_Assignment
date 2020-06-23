@@ -62,8 +62,7 @@ public class OutsiderWarehouse {
 
 
     public void RefulStock(Order order) {
-
-
+        System.out.println(order.itemName + "rendelése folyamatban!");
     }
 
     @Override

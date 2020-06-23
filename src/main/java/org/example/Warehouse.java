@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class Warehouse implements Subject{
@@ -38,7 +39,25 @@ public abstract class Warehouse implements Subject{
         }
     }
 
-    public abstract List<Item> getItem(Order itemorder) throws InterruptedException;
+    public List<Item> getItem(Order itemorder)  {
+        Iterator it = stockpile.iterator();
+        List<Item> orderedItems = new ArrayList<>();
+        while(it.hasNext()){
+            Item item =(Item)it.next();
+            if (item.name == itemorder.itemName && item.type == itemorder.itemType ){
+                orderedItems.add(item);
+                it.remove();
+            }
+            if(orderedItems.size() == itemorder.quantity)
+                return orderedItems;
+        }
+
+        if(itemorder.quantity<=(capacity-stockpile.size())) {
+            notifySuppliers(itemorder);
+            System.out.println("Nincs raktáron a kívánt tárgy!\n Folyamatban a rendelés!");
+        }
+        return orderedItems;
+    }
 
     public abstract  void orderSupply(Order order);
 
